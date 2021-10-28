@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF-DATA</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body>
+    <a id="delete"  class="btn btn-primary fixed-top" href="/charts.png" download="charts.png" style="border-radius: 0;">Download image</a>
+
+    <div style="padding-top: 5rem;">
+        <div class=" container">
+            <% for(var x=0; x < chart.length/2; x++){ %>
+                <h1 id=<%="header"+x %>></h1>
+                <div style="position: relative; height:40vh; width:80vw">
+                    <canvas id=<%="canves" + x %>>            </canvas>
+                    </div>
+                <% } %>
+        </div>
+    </div>
+
+    <script>
+
+        let data = <%- chart.data %>;
+        let types = <%- chart.types %>;
+        console.log(data);
+        for (let i = 0; i < data.length; i += 2) {
+            let chart = document.getElementById("canves" + i / 2).getContext('2d');
+            let label = data[i];
+            let content = data[i + 1];
+            let labels = [];
+            let values = [];
+            console.log(content);
+            let j = 0;
+            console.log("Test " + j);
+            for (j = 0; j < content.length; j++) {
+                labels.push(content[j]);
+                console.log(j);
+                values.push(content[j + 1]);
+                j ++;
+            }
+
+            document.getElementById("header"+i/2).innerHTML = label;
+
+            console.log(labels);
+            console.log(values);
+            let type = types[i/2];
+            let hasScale = true;
+            if(type == "doughnut" || type == "pie")
+                hasScale = false;
+
+
+            let barChart = new Chart(chart, {
+                type: type,
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: label,
+                        data: values,
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }]
+                },
+
+                options: {
+                        responsive: true,
+                        maintainAspectRatio: false 
+                }
+                
+            });
+        }
+
+        window.status = "ready";
+
+    </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

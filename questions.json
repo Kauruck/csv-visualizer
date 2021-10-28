@@ -1,0 +1,17 @@
+{
+    "fileName": "Test.csv",
+    "1": {
+        "name": "A1",
+        "type": "doughnut"
+    },
+    "2": {
+        "name": "A2",
+        "type": "bar",
+        "split": ""
+    },
+    "3": {
+        "name": "A3",
+        "type": "bar",
+        "split": ","
+    }
+}

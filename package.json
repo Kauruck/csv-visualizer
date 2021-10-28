@@ -1,0 +1,27 @@
+{
+  "name": "csv-visualizer",
+  "version": "1.0.0",
+  "description": "Viewing csv",
+  "main": "index.js",
+  "scripts": {
+    "test": "dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kauruck/csv-visualizer.git"
+  },
+  "author": "Kauruck",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Kauruck/csv-visualizer/issues"
+  },
+  "homepage": "https://github.com/Kauruck/csv-visualizer#readme",
+  "dependencies": {
+    "csv-parse": "^4.16.3",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "html-to-image": "^1.9.0",
+    "ip": "^1.1.5",
+    "puppeteer": "^10.4.0"
+  }
+}
